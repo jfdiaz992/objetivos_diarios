@@ -1,0 +1,47 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div id="contenedorImg">
+      <img src="../../assets/imgs/iconoLogin.png" id="loginPicture">
+  </div>
+  <form [formGroup]='registerForm'>
+    <ion-list>
+
+      <ion-item>
+        <ion-label staked>Username</ion-label>
+        <ion-input type="text" formControlName="email" name="email" [(ngModel)]="data['email']" placeholder="ejemplo@ejemplo.com"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="registerForm.get('email').errors && registerForm.get('email').dirty"> 
+          <p *ngIf="registerForm.get('email').hasError('required')" style="white-space: normal; color:red">Este campo es obligatorio</p>
+          <p *ngIf="registerForm.get('email').hasError('email')" style="white-space: normal; color:red">Por favor ingrese un correo valido</p>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label staked>Password</ion-label>
+        <ion-input type="password" formControlName="password" name="password" [(ngModel)]="data.password" placeholder="*******"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="registerForm.get('password').errors && registerForm.get('password').dirty">
+        <p *ngIf="registerForm.get('password').hasError('required')" style="white-space: normal; color:red">La contraseña es obligatoria</p>
+      </ion-item>
+
+      <br>
+    </ion-list>
+  </form>
+  <ion-footer>
+    <button ion-button (click)="authenticateUser()" [disabled]="!registerForm.valid">Login</button>
+    <button ion-button (click)="registerUser()">Register</button>
+    
+  </ion-footer>
+</ion-content>
