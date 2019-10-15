@@ -43,6 +43,6 @@
     <button ion-button (click)="authenticateUser()" [disabled]="!loginForm.valid" round>Login</button>
     <button ion-button (click)="registerUser()" round>Register</button>
     <br>
-    <button ion-button clear small>¿Olvidaste tus datos? Recuperalos</button>
+    <button ion-button (click)="recoveryPassword()" clear small>¿Olvidaste tus datos? Recuperalos</button>
   </ion-footer>
 </ion-content>

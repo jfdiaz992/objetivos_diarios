@@ -24,7 +24,8 @@ export class RegisterPage {
       'email': ['',[Validators.email, Validators.required]],
       'password' : ['',[Validators.required]],
       'passwordConfirm' : ['',[Validators.required]],
-    });
+    })
+    //FormGroup for password validate
   }
   registerUser(){
     console.log(this.data)
