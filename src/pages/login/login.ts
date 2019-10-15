@@ -17,9 +17,9 @@ import { RegisterPage } from '../register/register';
 export class LoginPage {
 
   data:any[]=[]
-  registerForm:FormGroup
+  loginForm:FormGroup
   constructor(public navCtrl: NavController, public navParams: NavParams, private fb: FormBuilder) {
-  this.registerForm = this.fb.group({
+  this.loginForm = this.fb.group({
     'email' : ['',[Validators.email, Validators.required]],
     'password' : ['',[Validators.required]]
   })

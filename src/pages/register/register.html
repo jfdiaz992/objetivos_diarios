@@ -6,10 +6,74 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+    <form [formGroup]='registerForm'>
+          <ion-list>
+            <ion-item>
+                <ion-label floating>Name</ion-label>
+                <ion-input type="text" formControlName="name" name="name" [(ngModel)]="data.name"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
+                <p *ngIf="registerForm.get('name').hasError('required')" 
+                style="white-space: normal; color:red">Este campo es obligatorio</p>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label floating>Email</ion-label>
+                <ion-input type="text" formControlName="email" name="email" [(ngModel)]="data['email']"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="registerForm.get('email').errors && registerForm.get('email').dirty"> 
+                  <p *ngIf="registerForm.get('email').hasError('required')" 
+                    style="white-space: normal; color:red">Este campo es obligatorio</p>
+                  <p *ngIf="registerForm.get('email').hasError('email')" 
+                    style="white-space: normal; color:red">Por favor ingrese un correo valido</p>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label floating>Job</ion-label>
+                <ion-input type="text" formControlName="job" name="job" [(ngModel)]="data.job"></ion-input>
+              </ion-item> 
+              <ion-item *ngIf="registerForm.get('job').errors && registerForm.get('job').dirty">
+                 <p *ngIf="registerForm.get('job').hasError('required')"
+                  style="white-space: normal; color:red">Este campo es obligatorio</p> 
+              </ion-item>
+            
+              <ion-item>
+                <ion-label floating>Characteristic</ion-label>
+                <ion-input type="text" formControlName="characteristic"
+                 name="characteristic" [(ngModel)]="data['characteristic']"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="registerForm.get('characteristic').errors && registerForm.get('characteristic').dirty">
+                  <p *ngIf="registerForm.get('characteristic').hasError('required')"
+                  style="white-space: normal; color:red">Este campo es obligatorio</p>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input type="password" formControlName="password"
+                name="password" [(ngModel)]="data.password"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="registerForm.get('password').errors && registerForm.get('password').dirty">
+                <p *ngIf="registerForm.get('password').hasError('required')"
+                 style="white-space: normal; color: red;">La contraseña es obligatoria</p>
+              </ion-item>
+            
+              <ion-item>
+                  <ion-label floating>Confirm Password</ion-label>
+                  <ion-input type="password" formControlName="passwordConfirm"
+                  name="passwordConfirm" [(ngModel)]="data.passwordConfirm"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="registerForm.get('passwordConfirm').errors && registerForm.get('passwordConfirm').dirty">
+                  <p *ngIf="registerForm.get('passwordConfirm').hasError('required')"
+                   style="white-space: normal; color: red;">La confirmación de contraseña es obligatoria</p>
+                </ion-item>
+                <br>
+                <button ion-button full (click)="registerUser()" [disabled]="!registerForm.valid" round>Register</button>
 
+            </ion-list>
+        </form>
 </ion-content>
