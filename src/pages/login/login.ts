@@ -35,10 +35,15 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    let estaAutenticado = localStorage.getItem('autenticado');
+    if (estaAutenticado == 'true') {
+      this.navCtrl.setRoot(HomePage);
+    }
   }
 
   authenticateUser(){
     console.log(this.data)
+    localStorage.setItem('autenticado', 'true')
     this.navCtrl.setRoot(HomePage)
   }
 

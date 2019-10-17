@@ -14,8 +14,17 @@ import {  NavController, NavParams } from 'ionic-angular';
   templateUrl: 'activity-form.html',
 })
 export class ActivityFormPage {
-
+  estado:any
+  objetivo:any
+  titulo:any
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.estado = this.navParams.data['estado']
+    if (this.estado == 'nuevo') {
+      this.titulo = 'Nuevo objetivo'
+    } else {
+      this.titulo = 'Modificar objetivo'
+      this.objetivo = this.navParams.data['objetivo']
+    }
   }
 
   ionViewDidLoad() {
